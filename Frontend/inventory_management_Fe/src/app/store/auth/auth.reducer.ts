@@ -6,31 +6,34 @@ export interface AuthState {
   error: string | null;
 }
 
+const storedUser = localStorage.getItem('user');
+
 const initialState: AuthState = {
-  user: null,
-  error: null
+  user: storedUser ? JSON.parse(storedUser) : null,
+  error: null,
 };
 
 export const authReducer = createReducer(
   initialState,
 
-  // Existing Login Reducers
-  on(AuthActions.loginSuccess, (state, { user }) => ({
-    ...state,
-    user,
-    error: null
-  })),
+  on(AuthActions.loginSuccess, (state, { user }) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    return { ...state, user, error: null };
+  }),
   on(AuthActions.loginFailure, (state, { error }) => ({
     ...state,
     error
   })),
 
-  // New Register Reducers (Added)
-  on(AuthActions.registerSuccess, (state, { user }) => ({
-    ...state,
-    user,
-    error: null
-  })),
+  on(AuthActions.logout, () => {
+    localStorage.removeItem('user');
+    return { user: null, error: null };
+  }),
+
+  on(AuthActions.registerSuccess, (state, { user }) => {
+    localStorage.setItem('user', JSON.stringify(user));
+    return { ...state, user, error: null };
+  }),
   on(AuthActions.registerFailure, (state, { error }) => ({
     ...state,
     error

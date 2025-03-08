@@ -1,0 +1,55 @@
+<nav *ngIf="isUserLoggedIn" class="bg-gradient-to-r from-pink-500 to-yellow-400 text-white fixed top-0 left-0 w-full shadow-md z-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between items-center py-3">
+      
+      <!-- 🍦 Logo -->
+      <a routerLink="/dashboard" class="text-2xl font-bold flex items-center space-x-2">
+        <span class="material-icons text-white text-3xl">icecream</span>
+        <span>Sweety Icecreams</span>
+      </a>
+
+      <!-- 📜 Menu Items -->
+      <div class="hidden md:flex space-x-8 text-lg items-center">
+        <a routerLink="/dashboard" class="hover:underline flex items-center space-x-1">
+          <span class="material-icons text-lg">dashboard</span> <span>Dashboard</span>
+        </a>
+        <a routerLink="/inventory" class="hover:underline flex items-center space-x-1">
+          <span class="material-icons text-lg">icecream</span> <span>Flavors</span>
+        </a>
+        <a routerLink="/orders" class="hover:underline flex items-center space-x-1">
+          <span class="material-icons text-lg">shopping_cart</span> <span>Orders</span>
+        </a>
+        <a routerLink="/offers" class="hover:underline flex items-center space-x-1">
+          <span class="material-icons text-lg">local_offer</span> <span>Special Offers</span>
+        </a>
+        <button (click)="logout()" class="flex items-center space-x-2 bg-white text-pink-500 px-4 py-2 rounded-lg hover:bg-gray-200">
+          <span class="material-icons text-lg">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+
+      <!-- 🍔 Mobile Menu Button -->
+      <button class="md:hidden text-white text-3xl focus:outline-none" (click)="toggleMenu()">☰</button>
+    </div>
+
+    <!-- 📱 Mobile Menu -->
+    <div *ngIf="isMenuOpen" class="md:hidden flex flex-col space-y-3 py-2 text-center bg-pink-600">
+      <a routerLink="/dashboard" class="flex justify-center items-center space-x-1">
+        <span class="material-icons text-lg">dashboard</span> <span>Dashboard</span>
+      </a>
+      <a routerLink="/inventory" class="flex justify-center items-center space-x-1">
+        <span class="material-icons text-lg">icecream</span> <span>Flavors</span>
+      </a>
+      <a routerLink="/orders" class="flex justify-center items-center space-x-1">
+        <span class="material-icons text-lg">shopping_cart</span> <span>Orders</span>
+      </a>
+      <a routerLink="/offers" class="flex justify-center items-center space-x-1">
+        <span class="material-icons text-lg">local_offer</span> <span>Special Offers</span>
+      </a>
+      <button (click)="logout()" class="flex justify-center items-center space-x-2 bg-white text-pink-500 px-4 py-2 rounded-lg">
+        <span class="material-icons text-lg">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </div>
+</nav>

@@ -1,9 +1,16 @@
-<canvas baseChart
-        [data]="barChartData"
-        [options]="barChartOptions"
-        [plugins]="barChartPlugins"
-        [legend]="barChartLegend"
-        [type]="'bar'">
-</canvas>
-
-  
+<!-- Hero background with centered chart -->
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="text-center text-white px-4 w-full max-w-3xl">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <canvas baseChart 
+                    [data]="barChartData" 
+                    [options]="barChartOptions" 
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend" 
+                    [type]="'bar'"
+                    class="w-full ">
+                </canvas>
+            </div>
+        </div>
+    </div>
+    
