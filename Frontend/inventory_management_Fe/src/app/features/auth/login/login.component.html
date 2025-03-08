@@ -1,0 +1,19 @@
+<div class="flex items-center justify-center min-h-screen bg-login bg-gray-100">
+  <div class="bg-white p-8 rounded-lg shadow-md w-96 bg-opacity-90">
+    <h2 class="text-3xl font-bold text-pink-500 mb-4 text-center">Sweety Icecreams 🍦</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input type="email" placeholder="Email" formControlName="email"
+        class="w-full p-2 border rounded mb-2">
+      <input type="password" placeholder="Password" formControlName="password"
+        class="w-full p-2 border rounded mb-4">
+      <button type="submit"
+        class="w-full bg-pink-500 text-white p-2 rounded hover:bg-pink-700">
+        Login
+      </button>
+    </form>
+    <p class="text-center mt-2">Don't have an account? 
+      <a (click)="navigateToRegister()" class="text-pink-500 cursor-pointer">Register</a>
+    </p>
+  </div>
+</div>
+

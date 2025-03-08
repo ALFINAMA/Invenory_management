@@ -1,0 +1,9 @@
+input {
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  input:focus {
+    border-color: #28A745;
+  }
+  
