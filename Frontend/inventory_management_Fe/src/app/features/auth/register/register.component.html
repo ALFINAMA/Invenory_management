@@ -1,5 +1,4 @@
 <div class="flex items-center justify-center min-h-screen bg-register bg-cover bg-center">
-  
   <div class="bg-white p-8 rounded-lg shadow-md w-96 bg-opacity-90">
     <h2 class="text-3xl font-bold text-pink-500 mb-4 text-center">Join Sweety Icecreams 🍦</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -13,6 +12,8 @@
         class="w-full bg-pink-500 text-white p-2 rounded hover:bg-pink-700">
         Register
       </button>
+      <!-- Display the error message -->
+      <div *ngIf="errorMessage" class="error-message text-red-500 mt-2">{{ errorMessage }}</div>
     </form>
     <p class="text-center mt-2">Already have an account? 
       <a (click)="navigateToLogin()" class="text-pink-500 cursor-pointer">Login</a>

@@ -13,7 +13,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
 
-  title = 'inventory_management_Fe';
   store = inject(Store);
   isLoggedIn$!: Observable<boolean>;
 
