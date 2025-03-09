@@ -1,17 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+:root {
+  --navbar-height: 64px; /* Matches pt-16 */
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .bg-login {
-    background-image: url('assets/images/ice.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .bg-register {
-    background-image: url('assets/images/login-ice.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-  
+  background-image: url('assets/images/ice.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-register {
+  background-image: url('assets/images/login-ice.jpg');
+  background-size: cover;
+  background-position: center;
+}
