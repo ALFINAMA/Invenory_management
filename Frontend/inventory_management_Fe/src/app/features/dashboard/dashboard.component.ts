@@ -23,7 +23,7 @@ export class DashboardComponent {
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: false,
+    responsive: true,
   };
 
   constructor() {
