@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { login } from '../../../store/auth/auth.actions';
+import { login, logout } from '../../../store/auth/auth.actions';
 import { take } from 'rxjs/internal/operators/take';
 import { filter } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { filter } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent{
   loginForm: FormGroup;
   errorMessage: string | null = null;
 
@@ -23,7 +23,7 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-
+    this.store.dispatch(logout());
     this.store
       .select((state) => state.auth.user)
       .pipe(filter((user) => !!user)) 
