@@ -33,3 +33,8 @@ export const registerFailure = createAction(
 );
 
 export const logout = createAction('[Auth] Logout');
+
+export const setNavbarVisibility = createAction(
+  '[Auth] Set Navbar Visibility',
+  props<{ hideNavbar: boolean }>()
+);

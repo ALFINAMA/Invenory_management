@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../../services/auth.service';
 import { logout } from '../../../store/auth/auth.actions';
+import { selectHideNavbar, selectIsUserLoggedIn } from '../../../store/auth/auth.selectors';
 
 @Component({
   selector: 'app-navbar',
@@ -13,12 +14,15 @@ import { logout } from '../../../store/auth/auth.actions';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  store = inject(Store)
   isUserLoggedIn = false;
-  isMenuOpen = false; // Default: Menu is closed
+  isMenuOpen = false;
+  hideNavbar = false; 
 
-  constructor(private router: Router, private store: Store, private authService: AuthService) {
-    this.authService.isLoggedIn().subscribe((loggedIn) => {
-      this.isUserLoggedIn = loggedIn;
+  constructor(private router: Router, private authService: AuthService) {
+    this.store.select('auth').subscribe((state) => {
+      this.isUserLoggedIn = !!state.user;
+      this.hideNavbar = state.hideNavbar;
     });
   }
 

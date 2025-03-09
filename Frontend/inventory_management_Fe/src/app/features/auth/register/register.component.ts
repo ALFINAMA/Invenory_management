@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { register } from '../../../store/auth/auth.actions';
+import { logout, register } from '../../../store/auth/auth.actions';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     });
-
+    this.store.dispatch(logout());
     this.store.select('auth').subscribe((state) => {
       this.errorMessage = state.error;
 

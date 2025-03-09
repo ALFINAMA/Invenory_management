@@ -8,6 +8,8 @@ import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angul
 import { authReducer } from './store/auth/auth.reducer';
 import { AuthEffects } from './store/auth/auth.effects';
 import { appRoutes } from './app.routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -15,6 +17,7 @@ export const appConfig: ApplicationConfig = {
   provideStore({ auth: authReducer }),
   provideEffects([AuthEffects]),
   provideCharts(withDefaultRegisterables()),
-  provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode(), }) 
+  provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode(), }),
+  provideHttpClient(withInterceptors([authInterceptor]))
   ]
 };
